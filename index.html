@@ -21,7 +21,7 @@
     </style>
   </head>
   <body>
-    <header class="container max-sm:px-1 md:pt-12 mx-auto flex items-center justify-between font-mulish">
+    <header class="container max-sm:px-1 md:pt-10 mx-auto flex items-center justify-between font-mulish">
       <div class="navbar bg-base-100">
         <div class="navbar-start">
           <div class="dropdown">
@@ -68,7 +68,34 @@
       </div>
     </header>
 
-    <main></main>
+    <main class="container max-sm:px-1 md:pt-5 mx-auto">
+      <!-- hero -->
+      <div class="p-[100px] max-sm:py-16 bg-[#12132D] rounded-[32px] bg-[url('./Assets/images/bgbanner.png')] bg-contain bg-no-repeat bg-bottom font-mulish">
+        <div class="hero-content justify-between max-sm:flex-col">
+          <div>
+            <h1 class="text-5xl font-bold text-white text-[64px] md:leading-[86px] max-sm:hidden">
+              Welcome to the <br />
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-indigo-900">QuAint</span> Forum
+            </h1>
+            <h1 class="text-5xl font-bold text-white text-[54px] md:leading-[86px] md:hidden">
+              Welcome to the
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-indigo-900">QuAint</span> Forum
+            </h1>
+            <p class="py-6 text-white max-w-96 text-lg">Share your favorite opinion and win and wp forum coffee mug!</p>
+            <label id="couponInputField" class="input input-bordered flex items-center gap-2 mt-4 md:w-2/3 rounded-[50px]">
+              <input type="text" class="grow" placeholder="Search here anything" />
+              <span id="applyBtn" class="bg-indigo-500 text-white py-1 px-4 cursor-pointer font-semibold rounded-[50px]">Search</span>
+            </label>
+          </div>
+          <div class="p-12 bg-white rounded-[32px] space-y-4 max-sm:mt-4">
+            <p class="flex justify-between gap-6 text-2xl font-medium text-slate-900 text-opacity-80">Registered Users <span>01</span></p>
+            <p class="flex justify-between text-2xl font-medium text-slate-900 text-opacity-80">Forum <span>05</span></p>
+            <p class="flex justify-between text-2xl font-medium text-slate-900 text-opacity-80">Topics <span>01</span></p>
+            <p class="flex justify-between text-2xl font-medium text-slate-900 text-opacity-80">Replies <span>01</span></p>
+          </div>
+        </div>
+      </div>
+    </main>
     <footer></footer>
     <script src="./scripts/script.js"></script>
   </body>
