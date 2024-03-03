@@ -1,6 +1,7 @@
 const allPostsContainer = document.getElementById('discussion__box-container');
 const allPostsSidebarEntries = document.getElementById('discussion__sidebar-entries');
 const discussionLoadingSpinner = document.getElementById('discussion__spinner');
+const latestPostsContainer = document.getElementById('latestPosts-container');
 const postSearchInput = document.getElementById('postSearch');
 const postSearchBtn = document.getElementById('searchBtn');
 
@@ -81,7 +82,40 @@ function addInSidebar(title, viewCount) {
   document.getElementById('markRead-count').innerText = markReadCount;
 }
 
-// loadAllPosts();
+const loadLatestPosts = async () => {
+  const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts');
+  const latestPosts = await res.json();
+  displayLatestPosts(latestPosts);
+};
+
+const displayLatestPosts = (latestPosts) => {
+  latestPosts.forEach((post) => {
+    latestPostsContainer.innerHTML += `
+    <div class="border border-slate-900 border-opacity-20 p-6 rounded-3xl">
+      <div class="w-full bg-slate-900 bg-opacity-5 rounded-[20px]">
+        <img src=${post.cover_image} alt="">
+      </div>
+
+      <div>
+        <div class="flex items-center gap-2 mt-4">
+          <img src="./Assets/images/publishicon.png" /> <span class="text-slate-900 text-opacity-80 text-base font-normal">${post.author.posted_date ?? 'No publish date'}</span>
+        </div>
+        <h3 class="text-slate-900 text-lg font-extrabold mt-4 mb-3">${post.title}</h3>
+        <p class="text-slate-900 text-opacity-80 text-base font-normal mb-4">${post.description}</p>
+        <div class="flex gap-3">
+          <div><img src=${post.profile_image} class="w-11 h-11 rounded-full" alt="" /></div>
+          <div>
+            <p class="text-slate-900 text-base font-bold">${post.author?.name}</p>
+            <p class="text-slate-900 text-opacity-60 text-sm font-normal">${post.author.designation ?? 'Unknown'}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    `;
+  });
+};
+
+loadLatestPosts();
 
 setTimeout(() => {
   loadAllPosts();
