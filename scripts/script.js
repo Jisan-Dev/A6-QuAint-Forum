@@ -44,7 +44,7 @@ const displayAllPosts = (allPosts) => {
     <div class="flex flex-col md:flex-row gap-4 bg-zinc-100 rounded-3xl p-10 shadow-xl">
       <div id="author_img" class="w-[72px] h-[72px] bg-white rounded-2xl relative">
         <img src=${post.image} class="rounded-2xl" />
-        <div class="w-[18.67px] h-[18.67px] ${post.isActive ? 'bg-emerald-500' : 'bg-red-500'}  rounded-[100px] border-2 border-white absolute right-0 top-0"></div>
+        <div class="w-[18.67px] h-[18.67px] ${post.isActive ? 'bg-emerald-500' : 'bg-red-500'}  rounded-[100px] border-2 border-white absolute -right-1 -top-1"></div>
       </div>
 
       <div class="md:w-full">
