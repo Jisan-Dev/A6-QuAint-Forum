@@ -53,16 +53,25 @@ const displayAllPosts = (allPosts) => {
           <span class="text-slate-900 text-opacity-80 text-sm font-medium font-inter">Author : ${post.author?.name}</span>
         </div>
         <h2 class="text-slate-900 text-xl font-bold font-mulish mt-3"> ${post.title} </h2>
-        <p class="mt-4 max-w-[569px] text-slate-900 text-opacity-60 text-base font-normal font-inter leading-relaxed">
+        <p class="mt-4 max-w-[569px] text-slate-900 text-opacity-80 text-base font-medium font-inter leading-relaxed">
           ${post.description}
         </p>
         <div class="mt-5 pt-6 border-t border-dashed border-slate-900 border-opacity-25 flex justify-between items-center">
           <div class="flex gap-4">
-            <span class="flex items-center gap-2"><img src="./Assets/images/icon-message.png" alt="" /> <span>${post.comment_count}</span></span>
-            <span class="flex items-center gap-2"><img src="./Assets/images/icon-eye.png" alt="" /> <span>${post.view_count}</span></span>
-            <span class="flex items-center gap-2"><img src="./Assets/images/icon-clock.png" alt="" /> <span>${post.posted_time} min</span></span>
+            <span class="flex items-center gap-2">
+              <img src="./Assets/images/icon-message.png"/> 
+              <span class="text-slate-900 text-opacity-80 text-base font-normal font-inter">${post.comment_count}</span>
+            </span>
+            <span class="flex items-center gap-2">
+              <img src="./Assets/images/icon-eye.png"/> 
+              <span class="text-slate-900 text-opacity-80 text-base font-normal font-inter">${post.view_count}</span>
+            </span>
+            <span class="flex items-center gap-2">
+              <img src="./Assets/images/icon-clock.png"/> 
+              <span class="text-slate-900 text-opacity-80 text-base font-normal font-inter">${post.posted_time} min</span>
+            </span>
           </div>
-          <img src="./Assets/images/email.png" class="cursor-pointer" onclick="addInSidebar('${post.title}', '${post.view_count}')" />
+          <img src="./Assets/images/email.png" class="cursor-pointer" onclick="addInSidebar('${post.title.replace("'", "\\'")}', ${post.view_count})" />
         </div>
       </div>
     </div>
@@ -107,7 +116,7 @@ const displayLatestPosts = (latestPosts) => {
           <div><img src=${post.profile_image} class="w-11 h-11 rounded-full" alt="" /></div>
           <div>
             <p class="text-slate-900 text-base font-bold">${post.author?.name}</p>
-            <p class="text-slate-900 text-opacity-60 text-sm font-normal">${post.author.designation ?? 'Unknown'}</p>
+            <p class="text-slate-900 text-sm font-semibold">${post.author.designation ?? 'Unknown'}</p>
           </div>
         </div>
       </div>
