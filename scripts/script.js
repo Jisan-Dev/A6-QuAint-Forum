@@ -2,6 +2,7 @@ const allPostsContainer = document.getElementById('discussion__box-container');
 const allPostsSidebarEntries = document.getElementById('discussion__sidebar-entries');
 const discussionLoadingSpinner = document.getElementById('discussion__spinner');
 const latestPostsContainer = document.getElementById('latestPosts-container');
+const latestPostsSpinner = document.getElementById('latestPosts__spinner');
 const postSearchInput = document.getElementById('postSearch');
 const postSearchBtn = document.getElementById('searchBtn');
 
@@ -101,8 +102,8 @@ const displayLatestPosts = (latestPosts) => {
           <img src="./Assets/images/publishicon.png" /> <span class="text-slate-900 text-opacity-80 text-base font-normal">${post.author.posted_date ?? 'No publish date'}</span>
         </div>
         <h3 class="text-slate-900 text-lg font-extrabold mt-4 mb-3">${post.title}</h3>
-        <p class="text-slate-900 text-opacity-80 text-base font-normal mb-4">${post.description}</p>
-        <div class="flex gap-3">
+        <p class="text-slate-900 text-opacity-80 text-base font-normal mb-4 min-h-[72px]">${post.description}</p>
+        <div class="flex gap-3 ">
           <div><img src=${post.profile_image} class="w-11 h-11 rounded-full" alt="" /></div>
           <div>
             <p class="text-slate-900 text-base font-bold">${post.author?.name}</p>
@@ -115,9 +116,9 @@ const displayLatestPosts = (latestPosts) => {
   });
 };
 
-loadLatestPosts();
-
 setTimeout(() => {
   loadAllPosts();
+  loadLatestPosts();
   discussionLoadingSpinner.style.display = 'none';
+  latestPostsSpinner.style.display = 'none';
 }, 2000);
