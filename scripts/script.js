@@ -1,5 +1,6 @@
 const allPostsContainer = document.getElementById('discussion__box-container');
 const allPostsSidebarEntries = document.getElementById('discussion__sidebar-entries');
+const discussionLoadingSpinner = document.getElementById('discussion__spinner');
 
 let markReadCount = 0;
 
@@ -53,4 +54,9 @@ function addInSidebar(title, viewCount) {
   document.getElementById('markRead-count').innerText = markReadCount;
 }
 
-loadAllPosts();
+// loadAllPosts();
+
+setTimeout(() => {
+  loadAllPosts();
+  discussionLoadingSpinner.style.display = 'none';
+}, 2000);
