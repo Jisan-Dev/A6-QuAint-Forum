@@ -1,8 +1,34 @@
 const allPostsContainer = document.getElementById('discussion__box-container');
 const allPostsSidebarEntries = document.getElementById('discussion__sidebar-entries');
 const discussionLoadingSpinner = document.getElementById('discussion__spinner');
+const postSearchInput = document.getElementById('postSearch');
+const postSearchBtn = document.getElementById('searchBtn');
 
-let markReadCount = 0;
+// posts Search from banner section
+postSearchBtn.addEventListener('click', async () => {
+  const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${postSearchInput.value}`);
+  const data = await res.json();
+  const allPosts = data.posts;
+
+  // if no posts found
+  if (allPosts.length === 0) {
+    allPostsContainer.innerHTML = '';
+    discussionLoadingSpinner.style.display = 'block';
+
+    setTimeout(() => {
+      discussionLoadingSpinner.style.display = 'none';
+      allPostsContainer.innerHTML = `<p class="text-center text-slate-900 text-opacity-80 text-xl font-medium font-inter">No posts found</p>`;
+    }, 2000);
+  } else {
+    allPostsContainer.innerHTML = '';
+    discussionLoadingSpinner.style.display = 'block';
+
+    setTimeout(() => {
+      discussionLoadingSpinner.style.display = 'none';
+      displayAllPosts(allPosts);
+    }, 2000);
+  }
+});
 
 const loadAllPosts = async () => {
   const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
@@ -42,6 +68,7 @@ const displayAllPosts = (allPosts) => {
   });
 };
 
+let markReadCount = 0;
 function addInSidebar(title, viewCount) {
   allPostsSidebarEntries.innerHTML += `
   <div class="p-4 bg-white rounded-2xl flex items-center justify-between mb-4">
